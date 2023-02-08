@@ -1,67 +1,60 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       body {
-        font-family: 'Montserrat', sans-serif;
-        background-image: radial-gradient(circle, #fdfd96, #f38181);
+        background: repeating-linear-gradient(
+          45deg,
+          #000,
+          #000 10px,
+          #001 10px,
+          #001 20px
+        );
+      }
+      #container {
+        width: 500px;
+        height: 300px;
+        margin: 100px auto;
         text-align: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
-      #lyrics {
-        padding: 50px;
-        margin-top: 50px;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+      #song-input {
+        width: 60%;
+        padding: 10px;
+        font-size: 20px;
       }
-      h1 {
-        color: #333;
-        font-size: 36px;
-        margin-bottom: 20px;
+      #play-button {
+        width: 20%;
+        padding: 10px;
+        font-size: 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div id="lyrics">
-      <h1>Lyrics:</h1>
-      <div id="lyrics-text"></div>
+    <div id="container">
+      <input
+        type="text"
+        id="song-input"
+        placeholder="Enter song name or URL"
+      />
+      <br />
+      <br />
+      <button id="play-button">Play</button>
     </div>
-    <iframe src="https://www.youtube.com/embed/2sML2bq_WGw?autoplay=1&loop=1&fs=0&disablekb=1&playlist=2sML2bq_WGw" width="200" height="200" title="Never ending Nujabes" frameborder="0"></iframe>
+    <audio id="player"></audio>
     <script>
-      const lyrics = [
-        "Verse 1:",
-        "I have a office for my car",
-        "I don't store numbers in my phone",
-        "My mind is filled with paranoia",
-        "My only enemy is myself",
-        "Cops want to lock me up",
-        "Because we make money, we are cool",
-        "I don't show off my chains at home",
-        "To remember how we weren't okay",
-        "",
-        "Chorus:",
-        "We passed middle class",
-        "We eat at restaurants like Gordon Ramsay",
-        "We don't pay taxes, everything is black",
-        "And if I want, I have a way to get cash",
-        "My baby wants new bags",
-        "Louis V and Gucci, we don't play with Prada",
-        "The bags are filled with diamonds",
-        "HD, diamonds shine like lights"
-      ];
-      let i = 0;
-      function displayLyrics() {
-        document.getElementById("lyrics-text").innerHTML = lyrics[i];
-        i++;
-        if (i >= lyrics.length) {
-          i = 0;
-        }
-      }
-      setInterval(displayLyrics, 2000);
+      const player = document.querySelector("#player");
+      const playButton = document.querySelector("#play-button");
+      const songInput = document.querySelector("#song-input");
+
+      playButton.addEventListener("click", function() {
+        player.src = songInput.value;
+        player.play();
+      });
     </script>
   </body>
 </html>
