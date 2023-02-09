@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body {
-        background: repeating-linear-gradient(
-          45deg,
-          #000,
-          #000 10px,
-          #001 10px,
-          #001 20px
-        );
-      }
-      #container {
-        width: 500px;
-        height: 300px;
-        margin: 100px auto;
-        text-align: center;
-      }
-      #song-input {
-        width: 60%;
-        padding: 10px;
-        font-size: 20px;
-      }
-      #play-button {
-        width: 20%;
-        padding: 10px;
-        font-size: 20px;
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-    </style>
+    <meta charset="UTF-8">
+    <title>Random Recipe Generator</title>
   </head>
   <body>
-    <div id="container">
-      <input
-        type="text"
-        id="song-input"
-        placeholder="Enter song name or URL"
-      />
-      <br />
-      <br />
-      <button id="play-button">Play</button>
-    </div>
-    <audio id="player"></audio>
+    <header>
+      <h1>Random Recipe Generator</h1>
+    </header>
+    <main>
+      <h2>Today's Recipe Suggestion:</h2>
+      <p id="recipe-suggestion"></p>
+    </main>
     <script>
-      const player = document.querySelector("#player");
-      const playButton = document.querySelector("#play-button");
-      const songInput = document.querySelector("#song-input");
-
-      playButton.addEventListener("click", function() {
-        player.src = songInput.value;
-        player.play();
-      });
+      const recipes = [
+        {
+          timeOfDay: "breakfast",
+          cuisine: "Greek",
+          dish: "Spanakopita",
+          ingredients: ["feta cheese", "spinach", "phyllo dough"]
+        },
+        {
+          timeOfDay: "lunch",
+          cuisine: "Italian",
+          dish: "Caprese Salad",
+          ingredients: ["tomatoes", "mozzarella cheese", "basil"]
+        },
+        {
+          timeOfDay: "dinner",
+          cuisine: "Mediterranean",
+          dish: "Lamb Tagine",
+          ingredients: ["lamb", "couscous", "spices"]
+        },
+        // Add more recipes here
+      ];
+      
+      const currentTime = new Date().getHours();
+      let timeOfDay;
+      
+      if (currentTime >= 6 && currentTime < 12) {
+        timeOfDay = "breakfast";
+      } else if (currentTime >= 12 && currentTime < 17) {
+        timeOfDay = "lunch";
+      } else if (currentTime >= 17 && currentTime < 22) {
+        timeOfDay = "dinner";
+      } else {
+        timeOfDay = "snack";
+      }
+      
+      const filteredRecipes = recipes.filter(
+        recipe => recipe.timeOfDay === timeOfDay
+      );
+      const randomRecipe =
+        filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
+      
+      document.getElementById("recipe-suggestion").innerHTML = `
+        <strong>Cuisine:</strong> ${randomRecipe.cuisine}<br>
+        <strong>Dish:</strong> ${randomRecipe.dish}<br>
+        <strong>Ingredients:</strong> ${randomRecipe.ingredients.join(", ")}
+      `;
     </script>
   </body>
 </html>
