@@ -2,121 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Random Recipe Generator</title>
+    <title>Random Greek Word Generator</title>
   </head>
   <body>
     <header>
-      <h1>Random Recipe Generator</h1>
+      <h1>Random Greek Word Generator</h1>
     </header>
     <main>
-      <h2>Today's Recipe Suggestion:</h2>
-      <p id="recipe-suggestion"></p>
+      <h2>Ask a question:</h2>
+      <input type="text" id="question-input">
+      <button type="button" onclick="generateAnswer()">Generate Answer</button>
+      <p id="answer"></p>
     </main>
     <script>
-      const recipes = [
-        {
-          timeOfDay: "breakfast",
-          cuisine: "Greek",
-          dish: "Spanakopita",
-          recipe: "https://www.delish.com/uk/cooking/recipes/a31034892/spanakopita-recipe/",
-          ingredients: [
-            {name: "feta cheese", amount: 200, unit: "g"},
-            {name: "spinach", amount: 300, unit: "g"},
-            {name: "phyllo dough", amount: 8, unit: "sheets"}
-          ]
-        },
-        {
-          timeOfDay: "breakfast",
-          cuisine: "Greek",
-          dish: "Greek Yogurt Parfait",
-          recipe: "https://www.delish.com/uk/cooking/recipes/a31181766/greek-yogurt-parfait-recipe/",
-          ingredients: [
-            {name: "greek yogurt", amount: 200, unit: "g"},
-            {name: "granola", amount: 50, unit: "g"},
-            {name: "honey", amount: 1, unit: "tbsp"},
-            {name: "strawberries", amount: 5, unit: "medium"}
-          ]
-        },
-        {
-          timeOfDay: "lunch",
-          cuisine: "Italian",
-          dish: "Margherita Pizza",
-          recipe: "https://www.delish.com/uk/cooking/recipes/a31282923/margherita-pizza-recipe/",
-          ingredients: [
-            {name: "pizza dough", amount: 250, unit: "g"},
-            {name: "passata", amount: 100, unit: "g"},
-            {name: "mozzarella cheese", amount: 125, unit: "g"},
-            {name: "fresh basil", amount: 10, unit: "leaves"}
-          ]
-        },
-        {
-          timeOfDay: "lunch",
-          cuisine: "Italian",
-          dish: "Caprese Panini",
-          recipe: "https://www.delish.com/uk/cooking/recipes/a30901941/caprese-panini-recipe/",
-          ingredients: [
-            {name: "ciabatta bread", amount: 1, unit: "loaf"},
-            {name: "tomatoes", amount: 2, unit: "medium"},
-            {name: "mozzarella cheese", amount: 125, unit: "g"},
-            {name: "fresh basil", amount: 10, unit: "leaves"}
-          ]
-        },
-        {
-          timeOfDay: "dinner",
-          cuisine: "Mediterranean",
-          dish: "Lamb Tagine",
-          recipe: "https://www.delish.com/uk/cooking/recipes/a31282922/lamb-tagine-recipe/",
-          ingredients: [
-            {name: "lamb", amount: 500, unit: "g"},
-            {name: "couscous", amount: 200, unit: "g"},
-            {name: "carrots", amount: 2, unit: "medium"},
-{name: "onion", amount: 1, unit: "medium"},
-{name: "garlic", amount: 3, unit: "cloves"},
-{name: "dried apricots", amount: 100, unit: "g"},
-{name: "chickpeas", amount: 400, unit: "g"},
-{name: "chicken broth", amount: 500, unit: "ml"},
-{name: "olive oil", amount: 3, unit: "tbsp"},
-{name: "ground cinnamon", amount: 1, unit: "tsp"},
-{name: "ground ginger", amount: 1, unit: "tsp"},
-{name: "ground cumin", amount: 1, unit: "tsp"},
-{name: "paprika", amount: 1, unit: "tsp"},
-{name: "salt", amount: 1, unit: "tsp"}
-]
-},
-{
-timeOfDay: "dinner",
-cuisine: "Italian",
-dish: "Spaghetti Carbonara",
-recipe: "https://www.delish.com/uk/cooking/recipes/a31282230/spaghetti-carbonara-recipe/",
-ingredients: [
-{name: "spaghetti", amount: 400, unit: "g"},
-{name: "pancetta", amount: 150, unit: "g"},
-{name: "eggs", amount: 4},
-{name: "pecorino romano cheese", amount: 100, unit: "g"},
-{name: "olive oil", amount: 2, unit: "tbsp"},
-{name: "garlic", amount: 2, unit: "cloves"},
-{name: "black pepper", amount: 1, unit: "tsp"},
-{name: "salt", amount: 1, unit: "tsp"}
-]
-},
-{
-timeOfDay: "dinner",
-cuisine: "Greek",
-dish: "Moussaka",
-recipe: "https://www.delish.com/uk/cooking/recipes/a31283280/moussaka-recipe/",
-ingredients: [
-{name: "potatoes", amount: 1, unit: "kg"},
-{name: "aubergines", amount: 2},
-{name: "onion", amount: 1},
-{name: "garlic", amount: 2, unit: "cloves"},
-{name: "ground lamb", amount: 500, unit: "g"},
-{name: "canned tomatoes", amount: 400, unit: "g"},
-{name: "red wine", amount: 125, unit: "ml"},
-{name: "flour", amount: 2, unit: "tbsp"},
-{name: "milk", amount: 500, unit: "ml"},
-{name: "butter", amount: 50, unit: "g"},
-{name: "nutmeg", amount: 1, unit: "pinch"},
-{name: "grated parmesan cheese", amount: 100, unit: "g"},
-{name: "olive oil", amount: 3, unit: "tbsp"},
-{name: "salt", amount: 1, unit: "tsp"},
-{name: "black pepper", amount: 1, unit: "tsp"}
+      const greekWords = ["μπαλές", "αρξίδια", "ξλαμίδια", "πουτάνα", "καριόλα", "έχω μπαλές", "λίμη λώσσα", "ξύνω βερολίνο", "καλησπέρα από Ρουμανία", "ελβετικός", "έχω σως", "Χουγκό Μπος", "είμαι λος"];
+      
+      function generateAnswer() {
+        const question = document.getElementById("question-input").value;
+        if (question.trim() === "") {
+          alert("Please enter a question.");
+          return;
+        }
+        
+        const randomIndex = Math.floor(Math.random() * greekWords.length);
+        const answer = greekWords[randomIndex];
+        
+        document.getElementById("answer").innerHTML = answer;
+      }
+    </script>
+  </body>
+</html>
