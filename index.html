@@ -18,47 +18,105 @@
           timeOfDay: "breakfast",
           cuisine: "Greek",
           dish: "Spanakopita",
-          ingredients: ["feta cheese", "spinach", "phyllo dough"]
+          recipe: "https://www.delish.com/uk/cooking/recipes/a31034892/spanakopita-recipe/",
+          ingredients: [
+            {name: "feta cheese", amount: 200, unit: "g"},
+            {name: "spinach", amount: 300, unit: "g"},
+            {name: "phyllo dough", amount: 8, unit: "sheets"}
+          ]
+        },
+        {
+          timeOfDay: "breakfast",
+          cuisine: "Greek",
+          dish: "Greek Yogurt Parfait",
+          recipe: "https://www.delish.com/uk/cooking/recipes/a31181766/greek-yogurt-parfait-recipe/",
+          ingredients: [
+            {name: "greek yogurt", amount: 200, unit: "g"},
+            {name: "granola", amount: 50, unit: "g"},
+            {name: "honey", amount: 1, unit: "tbsp"},
+            {name: "strawberries", amount: 5, unit: "medium"}
+          ]
         },
         {
           timeOfDay: "lunch",
           cuisine: "Italian",
-          dish: "Caprese Salad",
-          ingredients: ["tomatoes", "mozzarella cheese", "basil"]
+          dish: "Margherita Pizza",
+          recipe: "https://www.delish.com/uk/cooking/recipes/a31282923/margherita-pizza-recipe/",
+          ingredients: [
+            {name: "pizza dough", amount: 250, unit: "g"},
+            {name: "passata", amount: 100, unit: "g"},
+            {name: "mozzarella cheese", amount: 125, unit: "g"},
+            {name: "fresh basil", amount: 10, unit: "leaves"}
+          ]
+        },
+        {
+          timeOfDay: "lunch",
+          cuisine: "Italian",
+          dish: "Caprese Panini",
+          recipe: "https://www.delish.com/uk/cooking/recipes/a30901941/caprese-panini-recipe/",
+          ingredients: [
+            {name: "ciabatta bread", amount: 1, unit: "loaf"},
+            {name: "tomatoes", amount: 2, unit: "medium"},
+            {name: "mozzarella cheese", amount: 125, unit: "g"},
+            {name: "fresh basil", amount: 10, unit: "leaves"}
+          ]
         },
         {
           timeOfDay: "dinner",
           cuisine: "Mediterranean",
           dish: "Lamb Tagine",
-          ingredients: ["lamb", "couscous", "spices"]
-        },
-        // Add more recipes here
-      ];
-      
-      const currentTime = new Date().getHours();
-      let timeOfDay;
-      
-      if (currentTime >= 6 && currentTime < 12) {
-        timeOfDay = "breakfast";
-      } else if (currentTime >= 12 && currentTime < 17) {
-        timeOfDay = "lunch";
-      } else if (currentTime >= 17 && currentTime < 22) {
-        timeOfDay = "dinner";
-      } else {
-        timeOfDay = "snack";
-      }
-      
-      const filteredRecipes = recipes.filter(
-        recipe => recipe.timeOfDay === timeOfDay
-      );
-      const randomRecipe =
-        filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
-      
-      document.getElementById("recipe-suggestion").innerHTML = `
-        <strong>Cuisine:</strong> ${randomRecipe.cuisine}<br>
-        <strong>Dish:</strong> ${randomRecipe.dish}<br>
-        <strong>Ingredients:</strong> ${randomRecipe.ingredients.join(", ")}
-      `;
-    </script>
-  </body>
-</html>
+          recipe: "https://www.delish.com/uk/cooking/recipes/a31282922/lamb-tagine-recipe/",
+          ingredients: [
+            {name: "lamb", amount: 500, unit: "g"},
+            {name: "couscous", amount: 200, unit: "g"},
+            {name: "carrots", amount: 2, unit: "medium"},
+{name: "onion", amount: 1, unit: "medium"},
+{name: "garlic", amount: 3, unit: "cloves"},
+{name: "dried apricots", amount: 100, unit: "g"},
+{name: "chickpeas", amount: 400, unit: "g"},
+{name: "chicken broth", amount: 500, unit: "ml"},
+{name: "olive oil", amount: 3, unit: "tbsp"},
+{name: "ground cinnamon", amount: 1, unit: "tsp"},
+{name: "ground ginger", amount: 1, unit: "tsp"},
+{name: "ground cumin", amount: 1, unit: "tsp"},
+{name: "paprika", amount: 1, unit: "tsp"},
+{name: "salt", amount: 1, unit: "tsp"}
+]
+},
+{
+timeOfDay: "dinner",
+cuisine: "Italian",
+dish: "Spaghetti Carbonara",
+recipe: "https://www.delish.com/uk/cooking/recipes/a31282230/spaghetti-carbonara-recipe/",
+ingredients: [
+{name: "spaghetti", amount: 400, unit: "g"},
+{name: "pancetta", amount: 150, unit: "g"},
+{name: "eggs", amount: 4},
+{name: "pecorino romano cheese", amount: 100, unit: "g"},
+{name: "olive oil", amount: 2, unit: "tbsp"},
+{name: "garlic", amount: 2, unit: "cloves"},
+{name: "black pepper", amount: 1, unit: "tsp"},
+{name: "salt", amount: 1, unit: "tsp"}
+]
+},
+{
+timeOfDay: "dinner",
+cuisine: "Greek",
+dish: "Moussaka",
+recipe: "https://www.delish.com/uk/cooking/recipes/a31283280/moussaka-recipe/",
+ingredients: [
+{name: "potatoes", amount: 1, unit: "kg"},
+{name: "aubergines", amount: 2},
+{name: "onion", amount: 1},
+{name: "garlic", amount: 2, unit: "cloves"},
+{name: "ground lamb", amount: 500, unit: "g"},
+{name: "canned tomatoes", amount: 400, unit: "g"},
+{name: "red wine", amount: 125, unit: "ml"},
+{name: "flour", amount: 2, unit: "tbsp"},
+{name: "milk", amount: 500, unit: "ml"},
+{name: "butter", amount: 50, unit: "g"},
+{name: "nutmeg", amount: 1, unit: "pinch"},
+{name: "grated parmesan cheese", amount: 100, unit: "g"},
+{name: "olive oil", amount: 3, unit: "tbsp"},
+{name: "salt", amount: 1, unit: "tsp"},
+{name: "black pepper", amount: 1, unit: "tsp"}
