@@ -3,8 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>Random Greek Word Generator</title>
+    <style>
+      body {
+        background-image: url("https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/331065310_975132980132859_8202365295114761492_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=yD-QkhVhtdUAX-PeNeN&_nc_ht=scontent.fath4-2.fna&oh=00_AfAcQaTC9b-550cXCrKjgjuHVngov2ZH5f5_LIu4Af12jw&oe=63F465AA");
+        background-size: cover;
+      }
+    </style>
   </head>
   <body>
+    <audio src="https://www.youtube.com/watch?v=Sv8LHpezbLw&t=175s" autoplay loop></audio>
     <header>
       <h1>Random Greek Word Generator</h1>
     </header>
@@ -16,19 +23,18 @@
     </main>
     <script>
       const greekWords = ["μπαλές", "αρξίδια", "ξλαμίδια", "πουτάνα", "καριόλα", "έχω μπαλές", "λίμη λώσσα", "ξύνω βερολίνο", "καλησπέρα από Ρουμανία", "ελβετικός", "έχω σως", "Χουγκό Μπος", "είμαι λος"];
-      
-      function generateAnswer() {
-        const question = document.getElementById("question-input").value;
-        if (question.trim() === "") {
-          alert("Please enter a question.");
-          return;
-        }
-        
-        const randomIndex = Math.floor(Math.random() * greekWords.length);
-        const answer = greekWords[randomIndex];
-        
-        document.getElementById("answer").innerHTML = answer;
-      }
-    </script>
-  </body>
+        function generateAnswer() {
+    const question = document.getElementById("question-input").value;
+    if (question.trim() === "") {
+      alert("Please enter a question.");
+      return;
+    }
+    
+    const randomIndex = Math.floor(Math.random() * greekWords.length);
+    const answer = greekWords[randomIndex];
+    
+    document.getElementById("answer").innerHTML = answer;
+  }
+</script>
+</body>
 </html>
