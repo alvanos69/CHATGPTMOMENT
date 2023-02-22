@@ -1,82 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Random Greek Word Generator</title>
+    <title>Me ta pouches!</title>
     <style>
-      body {
-        background-image: url("https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/331065310_975132980132859_8202365295114761492_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=yD-QkhVhtdUAX-PeNeN&_nc_ht=scontent.fath4-2.fna&oh=00_AfAcQaTC9b-550cXCrKjgjuHVngov2ZH5f5_LIu4Af12jw&oe=63F465AA");
-        background-size: cover;
+      #container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #000;
+        overflow: hidden;
       }
-    </style><!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Random Greek Word Generator</title>
-    <style>
-      body {
-        background-image: url('https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/331065310_975132980132859_8202365295114761492_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=yD-QkhVhtdUAX-PeNeN&_nc_ht=scontent.fath4-2.fna&oh=00_AfAcQaTC9b-550cXCrKjgjuHVngov2ZH5f5_LIu4Af12jw&oe=63F465AA');
-        background-size: cover;
-        background-position: center;
+      .planet {
+        position: absolute;
+        display: none;
+        border-radius: 50%;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Random Greek Word Generator</h1>
-    </header>
-    <main>
-      <h2>Ask a question:</h2>
-      <input type="text" id="question-input">
-      <button type="button" onclick="generateAnswer()">Generate Answer</button>
-      <p id="answer"></p>
-    </main>
-    <audio id="audio" src="https://www.youtube.com/watch?v=Sv8LHpezbLw&t=175s" autoplay loop></audio>
+    <div id="container">
+      <div class="planet" id="planet-1" style="background: red; width: 100px; height: 100px; top: 100px; left: 100px;"></div>
+      <div class="planet" id="planet-2" style="background: blue; width: 150px; height: 150px; top: 200px; left: 300px;"></div>
+      <div class="planet" id="planet-3" style="background: green; width: 200px; height: 200px; top: 400px; left: 500px;"></div>
+      <!-- Add more planets here -->
+    </div>
     <script>
-      const greekWords = ["μπαλές", "αρξίδια", "ξλαμίδια", "πουτάνα", "καριόλα", "έχω μπαλές", "λίμη λώσσα", "ξύνω βερολίνο", "καλησπέρα από Ρουμανία", "ελβετικός", "έχω σως", "Χουγκό Μπος", "είμαι λος"];
+      const planets = document.querySelectorAll('.planet');
+      const container = document.querySelector('#container');
       
-      function generateAnswer() {
-        const question = document.getElementById("question-input").value;
-        if (question.trim() === "") {
-          alert("Please enter a question.");
-          return;
-        }
-        
-        const randomIndex = Math.floor(Math.random() * greekWords.length);
-        const answer = greekWords[randomIndex];
-        
-        document.getElementById("answer").innerHTML = answer;
-      }
+      container.addEventListener('mousemove', function(event) {
+        const x = event.clientX;
+        const y = event.clientY;
+        planets.forEach(function(planet) {
+          const planetRect = planet.getBoundingClientRect();
+          const planetX = planetRect.left + planetRect.width / 2;
+          const planetY = planetRect.top + planetRect.height / 2;
+          const dx = x - planetX;
+          const dy = y - planetY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            planet.style.display = 'block';
+          } else {
+            planet.style.display = 'none';
+          }
+        });
+      });
     </script>
   </body>
-</html>
-
-  </head>
-  <body>
-    <audio src="https://www.youtube.com/watch?v=Sv8LHpezbLw&t=175s" autoplay loop></audio>
-    <header>
-      <h1>Random Greek Word Generator</h1>
-    </header>
-    <main>
-      <h2>Ask a question:</h2>
-      <input type="text" id="question-input">
-      <button type="button" onclick="generateAnswer()">Generate Answer</button>
-      <p id="answer"></p>
-    </main>
-    <script>
-      const greekWords = ["μπαλές", "αρξίδια", "ξλαμίδια", "πουτάνα", "καριόλα", "έχω μπαλές", "λίμη λώσσα", "ξύνω βερολίνο", "καλησπέρα από Ρουμανία", "ελβετικός", "έχω σως", "Χουγκό Μπος", "είμαι λος"];
-        function generateAnswer() {
-    const question = document.getElementById("question-input").value;
-    if (question.trim() === "") {
-      alert("Please enter a question.");
-      return;
-    }
-    
-    const randomIndex = Math.floor(Math.random() * greekWords.length);
-    const answer = greekWords[randomIndex];
-    
-    document.getElementById("answer").innerHTML = answer;
-  }
-</script>
-</body>
 </html>
